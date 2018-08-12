@@ -1,5 +1,5 @@
 # mt8173 platform board config
-LOCAL_PATH := device/mediatek/mt8173-common
+LOCAL_PATH := device/mediatek/mt8176-common
 
 # Platform
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -77,7 +77,7 @@ MTK_APPENDED_DTB_SUPPORT := yes
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/mediatek/mt8173-common/ril
+#BOARD_RIL_CLASS := ../../../device/mediatek/mt8176-common/ril
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true

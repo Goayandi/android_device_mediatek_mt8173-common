@@ -1,6 +1,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "GPD XD+"
+#define BTM_DEF_LOCAL_NAME   "Mi Pad"
 
 #endif

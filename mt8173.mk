@@ -1,4 +1,4 @@
-LOCAL_PATH := device/mediatek/mt8173-common
+LOCAL_PATH := device/mediatek/mt8176-common
 
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
