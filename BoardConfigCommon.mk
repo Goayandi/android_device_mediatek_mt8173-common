@@ -41,7 +41,7 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 
 # Boot animation
-TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
+#TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
@@ -60,6 +60,10 @@ WIFI_DRIVER_FW_PATH_P2P := P2P
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 
+# Display
+TARGET_SCREEN_HEIGHT := 2048
+TARGET_SCREEN_WIDTH := 1536
+
 # Common properties
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
@@ -69,7 +73,8 @@ TARGET_IS_64_BIT := true
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --second_offset 0x00e88000 --tags_offset 0x0df88000 --board Bemolx
+BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --base 0x40078000 --kernel_offset 0x00008000 --ramdisk_offset 0x08f88000 --second_offset 0x00e88000 --tags_offset 0x0df88000
+
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
