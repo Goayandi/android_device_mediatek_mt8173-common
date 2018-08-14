@@ -1,14 +1,23 @@
+# GPS
+allow system_server mnld:unix_dgram_socket sendto;
+allow system_server mnld_data_file:dir w_dir_perms;
+allow system_server mnld_data_file:sock_file create_file_perms;
+allow system_server mnld_data_file:file create_file_perms;
 
-# For mt8173 bootup
-allow system_server surfaceflinger:fifo_file { read write };
-allow system_server dri_device:chr_file  { open read write ioctl };
-allow system_server render_device:chr_file  { open read write ioctl };
+# Persist
+allow system_server protect_s_data_file:dir r_dir_perms;
 
-# ==============================================
-# MTK Policy Rule
-# ============
+# Sensors
+allow system_server hwmsensor_device:chr_file r_file_perms;
 
-allow system_server pq_service:service_manager find;
-allow system_server appdetection_service:service_manager add;
-allow system_server appdetection_service:service_manager find;
-allow system_server kisd:unix_stream_socket {connectto};
+# Wifi
+allow system_server wmtWifi_device:chr_file w_file_perms;
+
+# RGB Display Color
+allow system_server display_color_sysfs:file rw_file_perms;
+
+# Fast Charge
+allow system_server fast_charge_sysfs:file rw_file_perms;
+
+# Smart Wake
+allow system_server smartwake_sysfs:file rw_file_perms;

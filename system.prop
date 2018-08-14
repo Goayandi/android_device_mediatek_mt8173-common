@@ -1,80 +1,24 @@
-
-#
-#
-# system.prop for generic sdk
-#
-
-rild.libpath=mtk-ril.so
+# RIL
+rild.libpath=/system/lib64/mtk-ril.so
 rild.libargs=-d /dev/ttyC0
+ril.specific.sm_cause=0
+ril.external.md
+ril.flightmode.poweroffMD=0
+ril.telephony.mode=0
+ril.radiooff.poweroffMD=0
+ro.mtk_enable_md1=0
+persist.radio.default.sim=0
 
+#ro.telephony.ril_class=MT8173
 
-# MTK, Infinity, 20090720 {
+# WiFi
 wifi.interface=wlan0
-# MTK, Infinity, 20090720 }
-
-# MTK, mtk03034, 20101210 {
 ro.mediatek.wlan.wsc=1
-# MTK, mtk03034 20101210}
-# MTK, mtk03034, 20110318 {
 ro.mediatek.wlan.p2p=1
-# MTK, mtk03034 20110318}
-
-# MTK, mtk03034, 20101213 {
 mediatek.wlan.ctia=0
-# MTK, mtk03034 20101213}
 
-
-#
-wifi.tethering.interface=ap0
-#
-
+# Graphics
 ro.opengles.version=196610
-ro.hardware.gralloc=mt8173.img
-#ro.nohardwaregfx=true
-#ro.kernel.qemu=1
-#ro.kernel.qemu.gles=0
 
-wifi.direct.interface=p2p0
-dalvik.vm.heapgrowthlimit=128m
-dalvik.vm.heapsize=256m
-
-# USB MTP WHQL
-ro.sys.usb.mtp.whql.enable=0
-
-# Power off opt in IPO
-sys.ipo.pwrdncap=2
-
-ro.sys.usb.storage.type=mtp
-
-# USB BICR function
-ro.sys.usb.bicr=no
-
-# USB Charge only function
-ro.sys.usb.charging.only=yes
-
-# audio
-ro.camera.sound.forced=0
-ro.audio.silent=0
-
-ro.zygote.preload.enable=0
-
-# temporary enables NAV bar (soft keys)
-qemu.hw.mainkeys=1
-
-ro.kernel.zio=38,108,105,16
-#ro.kernel.qemu=1
-#ro.kernel.qemu.gles=0
-ro.boot.selinux=disable
-
-ro.sf.lcd_density=320
-
-# performance
-ro.mtk_perf_simple_start_win=1
-ro.mtk_perf_response_time=1
-# factory mode config
-sys.mtk.no.factoryimage=1
-# disable ipo for development
-sys.ipo.disable=1
-# HMDI 4K setting UI config
-ro.mtk_hdmi_4k_support=1
-
+# FRP
+ro.frp.pst=/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp
