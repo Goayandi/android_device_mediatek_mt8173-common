@@ -1,4 +1,6 @@
-allow vold nvdata_device:blk_file rw_file_perms;
-allow vold cache_block_device:blk_file rw_file_perms;
-allow vold protect1_device:blk_file rw_file_perms;
-allow vold protect2_device:blk_file rw_file_perms;
+# ==============================================
+# MTK Policy Rule
+# ============
+
+# for supporting access mtee based keymaster
+allow vold mtee_device:chr_file { read write open ioctl };

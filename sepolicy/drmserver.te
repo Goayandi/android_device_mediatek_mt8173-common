@@ -1,1 +1,7 @@
-allow drmserver sysfs_devinfo:file { open read write };
+# ==============================================
+# MTK Policy Rule
+# ============
+
+# mtee support
+allow drmserver mtee_device:chr_file { read write open ioctl };
+

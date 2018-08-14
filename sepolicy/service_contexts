@@ -1,2 +1,9 @@
-PQ  u:object_r:pq_service:s0
-NvRAMAgent u:object_r:nvram_agent_service:s0
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+# System Server Services
+
+# Other Services
+appdetection        u:object_r:appdetection_service:s0
+

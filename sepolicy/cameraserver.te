@@ -1,16 +1,26 @@
-# nvram
-allow cameraserver nvdata_file:dir rw_dir_perms;
-allow cameraserver nvdata_file:file create_file_perms;
-allow cameraserver ccci_device:chr_file rw_file_perms;
+#===================untrusted_app=============================
+allow untrusted_app cameraserver:fifo_file read;
+#============= untrusted_app ==============
+allow untrusted_app cameraserver:fifo_file write;
+#============= mediaserver ==============
+allow mediaserver cameraserver:fifo_file read;
+#============= untrusted_app ==============
+allow untrusted_app cameraserver:fifo_file getattr;
+#============= mediaserver ==============
+allow mediaserver cameraserver:fifo_file write;
+#============= mediaserver ==============
+allow mediaserver cameraserver:fifo_file getattr;
+#============= mediacodec ==============
+allow mediacodec cameraserver:fifo_file read;
+#============= mediacodec ==============
+allow mediacodec cameraserver:fifo_file write;
+#============= mediacodec ==============
+allow mediacodec cameraserver:fifo_file getattr;
 
-# camera
-allow cameraserver sensorservice_service:service_manager find;
-allow cameraserver system_server:unix_stream_socket { read write };
-allow cameraserver camera_device:chr_file rw_file_perms;
-allow cameraserver mtk_smi_device:chr_file rw_file_perms;
-allow cameraserver proc:file { read ioctl open };
-allow cameraserver devmap_device:chr_file r_file_perms;
-allow cameraserver devmap_device:chr_file { ioctl };
+allow mediacodec dri_device:chr_file  { open read write ioctl };
+allow mediacodec render_device:chr_file  { open read write ioctl };
 
-# PQ
-allow cameraserver pq_service:service_manager find;
+#============= cameraserver ==============
+allow cameraserver dri_device:chr_file { open read write ioctl};
+allow cameraserver render_device:chr_file { open read write ioctl};
+
