@@ -1,7 +1,5 @@
 # ==============================================
 # MTK Policy Rule
 # ============
-
-# mtee support
-allow drmserver mtee_device:chr_file { read write open ioctl };
+allow uncrypt para_block_device:blk_file { write open };
 
