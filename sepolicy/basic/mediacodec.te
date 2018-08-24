@@ -136,3 +136,8 @@ allow mediacodec MtkCodecService:binder transfer;
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
 allow mediacodec proc_ged:file {open read write ioctl getattr};
+
+#Date:WK26.05
+#Purpse:8173 mediacodec access mtee
+allow mediacodec mtee_device:chr_file { read write open ioctl };
+allow mediacodec surfaceflinger:fifo_file {read write};

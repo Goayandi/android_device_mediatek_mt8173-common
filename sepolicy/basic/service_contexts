@@ -13,4 +13,4 @@ GuiExtService       u:object_r:guiext-server_service:s0
 AAL                 u:object_r:aal_service:s0
 mtkhdmi             u:object_r:mtk_hdmi_service:s0
 GoogleOtaBinder         u:object_r:ota_agent_service:s0
-
+appdetection        u:object_r:appdetection_service:s0

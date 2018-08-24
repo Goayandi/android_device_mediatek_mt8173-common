@@ -217,3 +217,8 @@ type m_ges_misc_device, dev_type;
 type m_step_c_misc_device, dev_type;
 type m_tilt_misc_device, dev_type;
 type m_fusion_misc_device, dev_type;
+
+type rpmb_block_device,dev_type;
+
+type dri_device, dev_type, mlstrustedobject;
+type render_device, dev_type, mlstrustedobject;

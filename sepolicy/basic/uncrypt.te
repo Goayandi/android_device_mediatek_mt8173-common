@@ -14,3 +14,4 @@ allow uncrypt system_app_data_file:file { read getattr open };
 allow uncrypt media_rw_data_file:dir { getattr search };
 allow uncrypt media_rw_data_file:file { read getattr open };
 #allow uncrypt recovery_block_device:blk_file w_file_perms;
+allow uncrypt para_block_device:blk_file { write open };

@@ -290,14 +290,11 @@ allow mediaserver camera_dpe_device:chr_file rw_file_perms;
 # Purpose : TSF Driver
 allow mediaserver camera_tsf_device:chr_file rw_file_perms;
 
-
-
 # Date : WK1631
 # Operation : N Migration
 # Purpose : add permission for thermal manager
 domain_auto_trans(mediaserver, thermal_manager_exec, thermal_manager)
 allow mediaserver thermal_manager_exec:file { read getattr open execute};
-
 
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
@@ -307,3 +304,19 @@ allow mediaserver proc_ged:file {open read write ioctl getattr};
 # Operation : Migration
 # Purpose : allow mediaserver to find pq_service
 allow mediaserver pq_service:service_manager { find };
+
+# Date : WK15.35
+# Operation : Migration
+# Purpose: for secure video path feature, allow mediaserver use mtee exported function
+allow mediaserver mtee_device:chr_file { read write open ioctl };
+
+# Date : WK16.32
+# Operation : Refine
+# Purpose : for wfd feature, allow mediaserver set prop
+allow mediaserver media_wfd_prop:property_service set;
+
+#Purpose: hdcp for kisd(mtk94109)
+allow mediaserver kisd:unix_stream_socket {connectto};
+
+allow mediaserver dri_device:chr_file  { open read write ioctl };
+allow mediaserver render_device:chr_file  { open read write ioctl };

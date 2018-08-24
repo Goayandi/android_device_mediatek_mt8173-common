@@ -59,3 +59,10 @@ allow init kernel:system module_request;
 # Operation : Migration
 # Purpose : create symbolic link from /mnt/sdcard to /sdcard
 allow init tmpfs:lnk_file create;
+
+# For mt8173 bootup 
+allow init functionfs:dir mounton;
+allow init nvram_data_file:lnk_file read;
+allow init wmtWifi_device:chr_file write;
+
+allow init tmpfs:lnk_file create;

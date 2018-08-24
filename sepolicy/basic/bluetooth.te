@@ -13,3 +13,15 @@ allow bluetooth nvdata_file:file rw_file_perms;
 # Purpose:add for BT test
 allow bluetooth bluetooth_data_file:file rw_file_perms;
 allow bluetooth bluetooth_data_file:dir rw_file_perms;
+
+# For mt8173 bootup 
+allow bluetooth nvram_data_file:lnk_file read;
+
+#============= bluetooth ==============
+allow bluetooth dri_device:chr_file { open read write ioctl };
+allow bluetooth render_device:chr_file { open read write ioctl };
+
+# Date : WK16.36
+# Operation : Migration
+# Purpose: Allow bluetooth to access surfaceflinger
+allow bluetooth surfaceflinger:fifo_file { read write };

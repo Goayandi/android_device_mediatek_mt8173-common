@@ -5,3 +5,6 @@ allow recovery self:capability sys_resource;
 
 allow recovery system_app_data_file:dir {search };
 allow recovery system_app_data_file:file {read open};
+
+allow recovery vfat:dir *;
+allow recovery vfat:file ~{ execute entrypoint };

@@ -54,3 +54,7 @@ allow adbd surfaceflinger:fifo_file rw_file_perms;
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
 allow adbd proc_ged:file {open read write ioctl getattr};
+
+# For adbd capture screenshot
+allow adbd render_device:chr_file rw_file_perms;
+allow adbd dri_device:chr_file rw_file_perms;

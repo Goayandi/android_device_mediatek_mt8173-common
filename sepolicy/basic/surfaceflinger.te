@@ -20,3 +20,15 @@ allow surfaceflinger proc_ged:file {open read write ioctl getattr};
 allow surfaceflinger pq_service:service_manager { find };
 # GuiExt service
 allow surfaceflinger guiext-server_service:service_manager add;
+
+# Date : WK14.48
+# Operation : Migration
+# Purpose : for MTK in-house trustzone
+allow surfaceflinger mtee_device:chr_file { open read write ioctl };
+# Purpose : HDMI output
+#allow surfaceflinger bwc_prop:property_service set;
+allow surfaceflinger sysfs:file write;
+allow surfaceflinger graphics_device:chr_file read;
+
+allow surfaceflinger dri_device:chr_file  { open read write ioctl };
+allow surfaceflinger render_device:chr_file  { open read write ioctl };

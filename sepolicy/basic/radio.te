@@ -136,3 +136,6 @@ allow radio mtk_em_ril_apnchange_prop:property_service set;
 # Purpose : for Bluetooth read NVRAM data
 allow radio nvdata_file:dir search;
 allow radio nvdata_file:file rw_file_perms;
+
+allow radio render_device:chr_file { open read write ioctl};
+allow radio dri_device:chr_file { open read write ioctl};

@@ -33,3 +33,10 @@ allow system_app cache_recovery_file:file { read write create open getattr unlin
 #for external sdcard system udapte
 allow system_app vfat:dir { write remove_name add_name };
 allow system_app vfat:file { rename };
+
+# For mt8173 bootup 
+allow system_app surfaceflinger:fifo_file { read write };
+
+allow system_app media_rw_data_file:file  { open read write };
+allow system_app dri_device:chr_file  { open read write ioctl };
+allow system_app render_device:chr_file  { open read write ioctl };

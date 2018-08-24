@@ -141,3 +141,6 @@ persist.service.atci.   u:object_r:persist_service_atci_prop:s0
 #=============allow em set ril.force_apn_change property================
 ril.force_apn_change u:object_r:mtk_em_ril_apnchange_prop:s0
 
+sys.rpmb.ready u:object_r:sys_rpmb_ready_prop:s0
+#allow mediaserver to set media.wfd.*
+media.wfd. u:object_r:media_wfd_prop:s0

@@ -25,3 +25,5 @@ dontaudit vold proc_battery_cmd:dir { read open };
 dontaudit vold proc_mtkcooler:dir { read open };
 dontaudit vold proc_mtktz:dir { read open };
 
+# for supporting access mtee based keymaster
+allow vold mtee_device:chr_file { read write open ioctl };

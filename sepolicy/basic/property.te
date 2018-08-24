@@ -143,3 +143,6 @@ type persist_service_atci_prop, property_type, mtk_core_property_type;
 
 #============= allow em set mtk_em_ril_apnchange_prop property ===============
 type mtk_em_ril_apnchange_prop, property_type;
+
+type sys_rpmb_ready_prop, property_type;
+type media_wfd_prop, property_type, mtk_core_property_type;

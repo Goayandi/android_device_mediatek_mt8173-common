@@ -38,3 +38,9 @@ allow bootanim resourcecache_data_file:dir search;
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
 allow bootanim proc_ged:file {open read write ioctl getattr};
+
+# For mt8173 bootup 
+allow bootanim surfaceflinger:fifo_file { read write };
+
+allow bootanim dri_device:chr_file  { open read write ioctl };
+allow bootanim render_device:chr_file  { open read write ioctl };
