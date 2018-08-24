@@ -1,13 +1,30 @@
-LOCAL_PATH := device/mediatek/mt8173-common
+#
+# Copyright (C) 2018 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+TARGET_MEDIATEK_MT8173-COMMON := true
+
+COMMON_PATH := device/mediatek/mt8173-common
 
 # Common overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Configs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    $(LOCAL_PATH)/prebuilt/etc/ecc_list.xml:system/etc/ecc_list.xml \
-    $(LOCAL_PATH)/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml
+    $(COMMON_PATH)/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
+    $(COMMON_PATH)/prebuilt/etc/ecc_list.xml:system/etc/ecc_list.xml \
+    $(COMMON_PATH)/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -17,9 +34,9 @@ PRODUCT_PACKAGES += \
     wpa_supplicant
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf	
+    $(COMMON_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(COMMON_PATH)/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(COMMON_PATH)/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf	
 
 # Messaging
 PRODUCT_PACKAGES += \
@@ -29,6 +46,8 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     libion
+
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -55,7 +74,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
+    $(COMMON_PATH)/prebuilt/etc/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -116,9 +135,57 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libem_sensor_jni
 
-# Charger Mode
+# Charger
 PRODUCT_PACKAGES += \
     charger_res_images
+
+# Common Properties
+TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
+
+# CMHW
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
+
+# Key Layouts
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/keylayouts/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
+    $(COMMON_PATH)/keylayouts/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
+
+# Power
+PRODUCT_PACKAGES += \
+    power.default \
+    power.mt8173
+	
+# Wifi
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mt66xx
+WIFI_DRIVER_FW_PATH_PARAM := "/dev/wmtWifi"
+WIFI_DRIVER_FW_PATH_STA := STA
+WIFI_DRIVER_FW_PATH_AP := AP
+WIFI_DRIVER_FW_PATH_P2P := P2P
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+
+# Boot animation
+TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
+
+# Seccomp filter
+BOARD_SECCOMP_POLICY := $(COMMON_PATH)/seccomp
+
+# SELinux
+BOARD_SEPOLICY_DIRS := \
+    $(COMMON_PATH)/sepolicy/basic \
+    $(COMMON_PATH)/sepolicy/bsp \
+    $(COMMON_PATH)/sepolicy/full \
+
+# Android Debugging
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.adb.secure=0
 
 ifneq ($(TARGET_BUILD_VARIANT), user)
 # Mediatek logging service
@@ -130,15 +197,3 @@ PRODUCT_PACKAGES += \
     netdiag \
     tcpdump
 endif
-
-# Key Layouts
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayouts/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
-    $(LOCAL_PATH)/keylayouts/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
-
-# Power
-PRODUCT_PACKAGES += \
-    power.default \
-    power.mt8173
-	
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
