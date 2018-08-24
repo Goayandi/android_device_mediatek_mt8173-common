@@ -142,10 +142,6 @@ PRODUCT_PACKAGES += \
 # Common Properties
 TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
 
-# CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
-
 # Key Layouts
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/keylayouts/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
