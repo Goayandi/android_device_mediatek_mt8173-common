@@ -7,7 +7,7 @@
 # ==============================================
 
 type GoogleOtaBinder_exec , exec_type, file_type;
-type GoogleOtaBinder ,domain, domain_deprecated;
+type GoogleOtaBinder ,domain;
 
 # ==============================================
 # Android Policy Rule
