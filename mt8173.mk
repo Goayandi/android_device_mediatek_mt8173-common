@@ -174,9 +174,10 @@ BOARD_SECCOMP_POLICY := $(COMMON_PATH)/seccomp
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
-    $(COMMON_PATH)/sepolicy/basic \
- #   $(COMMON_PATH)/sepolicy/bsp \
- #   $(COMMON_PATH)/sepolicy/full \
+    $(COMMON_PATH)/common/sepolicy/basic \
+    $(COMMON_PATH)/common/sepolicy/bsp \
+    $(COMMON_PATH)/common/sepolicy/full \
+    $(COMMON_PATH)/mt8173/sepolicy/basic \
 
 # Android Debugging
 ADDITIONAL_DEFAULT_PROPERTIES += \
