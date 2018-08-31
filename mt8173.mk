@@ -26,12 +26,14 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/etc/ecc_list.xml:system/etc/ecc_list.xml \
     $(COMMON_PATH)/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml
 
-# Wifi
+# WiFi
 PRODUCT_PACKAGES += \
-    lib_driver_cmd_mt66xx \
-    libwpa_client \
-    hostapd \
-    wpa_supplicant
+		    dhcpcd.conf \
+		    hostapd \
+		    libwpa_client \
+		    wpa_supplicant \
+		    wpa_supplicant.conf \
+		    lib_driver_cmd_mt66xx
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
@@ -45,16 +47,19 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    libnl_2 \ #from Motorola woods
     libion
 
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Audio
+BOARD_USES_MTK_AUDIO := true
+
+# Audio
 PRODUCT_PACKAGES += \
-    audio_policy.default \
-    audio.r_submix.default \
     audio.a2dp.default \
-    audio.usb.default \
+    audio.r_submix.default \
+    libaudio-resampler \
     libtinyalsa \
     libtinycompress \
     libtinymix \
@@ -71,6 +76,14 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
+
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+		    media.stagefright.legacyencoder=0
+
+# IO Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+				    sys.io.scheduler=cfq
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -137,6 +150,7 @@ PRODUCT_PACKAGES += \
 
 # Charger
 PRODUCT_PACKAGES += \
+    charger \
     charger_res_images
 
 # Common Properties
@@ -152,22 +166,29 @@ PRODUCT_PACKAGES += \
     power.default \
     power.mt8173
 
-# Wifi
+# Wireless
+BOARD_WLAN_DEVICE := MediaTek
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mt66xx
-WIFI_DRIVER_FW_PATH_PARAM := "/dev/wmtWifi"
-WIFI_DRIVER_FW_PATH_STA := STA
+WIFI_DRIVER_FW_PATH_PARAM := /dev/wmtWifi
 WIFI_DRIVER_FW_PATH_AP := AP
+WIFI_DRIVER_FW_PATH_STA := STA
 WIFI_DRIVER_FW_PATH_P2P := P2P
+WIFI_DRIVER_STATE_CTRL_PARAM := /dev/wmtWifi
+WIFI_DRIVER_STATE_ON := 1
+WIFI_DRIVER_STATE_OFF := 0
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 
 # Boot animation
 TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
+
+# Charger
+BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(COMMON_PATH)/seccomp
@@ -185,6 +206,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0
 
 ifneq ($(TARGET_BUILD_VARIANT), user)
+
 # Mediatek logging service
 PRODUCT_PACKAGES += \
     MTKLogger \
