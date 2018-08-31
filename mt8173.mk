@@ -47,7 +47,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libnl_2 \ #from Motorola woods
+    libnl_2 \
     libion
 
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
