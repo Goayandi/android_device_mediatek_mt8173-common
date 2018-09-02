@@ -28,12 +28,14 @@ PRODUCT_COPY_FILES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-		    dhcpcd.conf \
-		    hostapd \
-		    libwpa_client \
-		    wpa_supplicant \
-		    wpa_supplicant.conf \
-		    lib_driver_cmd_mt66xx
+		android.hardware.wifi@1.0-service \
+		dhcpcd.conf \
+		hostapd \
+		lib_driver_cmd_mt66xx \
+		libwpa_client \
+		wificond \
+		wpa_supplicant \
+		wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
@@ -57,13 +59,16 @@ BOARD_USES_MTK_AUDIO := true
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.r_submix.default \
-    libaudio-resampler \
-    libtinyalsa \
-    libtinycompress \
-    libtinymix \
-    libtinyxml
+		android.hardware.audio@2.0-impl \
+		android.hardware.audio.effect@2.0-impl \
+		android.hardware.audio@2.0-service \
+		audio.a2dp.default \
+		audio.r_submix.default \
+		libaudio-resampler \
+		libtinyalsa \
+		libtinycompress \
+		libtinymix \
+		libtinyxml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
@@ -78,12 +83,12 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
 
 # Media
-PRODUCT_PROPERTY_OVERRIDES += \
-		    media.stagefright.legacyencoder=0
+#PRODUCT_PROPERTY_OVERRIDES += \
+#		    media.stagefright.legacyencoder=0
 
 # IO Scheduler
-PRODUCT_PROPERTY_OVERRIDES += \
-				    sys.io.scheduler=cfq
+#PRODUCT_PROPERTY_OVERRIDES += \
+#				    sys.io.scheduler=cfq
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -99,6 +104,7 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+		packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -138,6 +144,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
+    librs_jni \
     com.android.future.usb.accessory
 
 # WallpaperPicker
@@ -201,9 +208,9 @@ BOARD_SEPOLICY_DIRS := \
     $(COMMON_PATH)/mt8173/sepolicy/basic \
 
 # Android Debugging
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.adb.secure=0
+#ADDITIONAL_DEFAULT_PROPERTIES += \
+#    ro.secure=0 \
+#    ro.adb.secure=0
 
 ifneq ($(TARGET_BUILD_VARIANT), user)
 
