@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type netdiag_exec , exec_type, file_type;
-type netdiag ,domain, domain_deprecated;
+type netdiag ,domain;
 
 # ==============================================
 # MTK Policy Rule

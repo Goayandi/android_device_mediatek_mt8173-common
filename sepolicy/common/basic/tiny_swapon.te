@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type tiny_swapon_exec , exec_type, file_type;
-type tiny_swapon ,domain, domain_deprecated;
+type tiny_swapon ,domain;
 
 # ==============================================
 # MTK Policy Rule

@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type ccci_mdinit_exec , exec_type, file_type;
-type ccci_mdinit ,domain, domain_deprecated;
+type ccci_mdinit ,domain;
 
 # ==============================================
 # MTK Policy Rule
@@ -95,3 +95,5 @@ allow ccci_mdinit sysfs_ccci:file rw_file_perms;
 allow ccci_mdinit sysfs_ssw:dir search;
 allow ccci_mdinit sysfs_ssw:file r_file_perms;
 allow ccci_mdinit sysfs:file r_file_perms;
+#=============allow ccci_mdinit to start/stop fsd==============
+allow ccci_mdinit { ctl_ccci_rpcd_prop ctl_ccci2_rpcd_prop }:property_service set;

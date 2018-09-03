@@ -4,7 +4,7 @@
 # ==============================================
 # Type Declaration
 # ==============================================
-type tune2fs, domain, domain_deprecated;
+type tune2fs, domain;
 type tune2fs_exec, exec_type, file_type;
 
 # ==============================================

@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type muxreport_exec , exec_type, file_type;
-type muxreport ,domain, domain_deprecated;
+type muxreport ,domain;
 
 # ==============================================
 # MTK Policy Rule

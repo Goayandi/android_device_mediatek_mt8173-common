@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type mobile_log_d_exec , exec_type, file_type;
-type mobile_log_d ,domain, domain_deprecated;
+type mobile_log_d ,domain;
 
 # ==============================================
 # MTK Policy Rule

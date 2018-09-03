@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type wifi2agps_exec , exec_type, file_type;
-type wifi2agps ,domain, domain_deprecated;
+type wifi2agps ,domain;
 
 # ==============================================
 # MTK Policy Rule

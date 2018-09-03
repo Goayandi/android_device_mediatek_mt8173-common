@@ -4,7 +4,7 @@
 # ==============================================
 # Type Declaration
 # ==============================================
-type pvrsrvctl, domain, domain_deprecated;
+type pvrsrvctl, domain;
 type pvrsrvctl_exec, exec_type, file_type;
 
 # ==============================================

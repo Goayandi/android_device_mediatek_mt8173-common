@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type thermal_manager_exec , exec_type, file_type;
-type thermal_manager ,domain, domain_deprecated;
+type thermal_manager ,domain;
 
 # ==============================================
 # MTK Policy Rule

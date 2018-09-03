@@ -6,7 +6,7 @@
 # =============================================================================
 
 type thermalindicator_exec, exec_type, file_type;
-type thermalindicator, domain, domain_deprecated;
+type thermalindicator, domain;
 
 # =============================================================================
 # MTK Policy Rule

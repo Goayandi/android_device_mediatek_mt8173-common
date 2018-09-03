@@ -196,3 +196,87 @@ allow audioserver storage_file:dir { r_dir_perms };
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
 allow audioserver proc_ged:file {open read write ioctl getattr};
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+# Date: WK14.44
+# Operation : Migration
+# Purpose : EVDO
+allow audioserver statusd:unix_stream_socket connectto;
+
+# Date : WK15.03
+# Operation : Migration
+# Purpose : offloadservice
+allow audioserver offloadservice_device:chr_file { read write ioctl open };
+
+# Data : WK14.47
+# Operation : Migration
+# Purpose : for WFD looper
+allow audioserver custom_file:dir search;
+
+# Date : WK14.49
+# Operation : WFD
+# Purpose : WFD notifies its status to thermal module
+allow audioserver proc_thermal:file { write getattr open };
+#allow audioserver thermal_manager_exec:file { x_file_perms read open };
+allow audioserver proc_mtkcooler:file { read write open };
+allow audioserver proc_mtktz:file { read write open };
+allow audioserver proc_thermal:file { read write open };
+allow audioserver thermal_manager_data_file:file setattr;
+
+# Date : WK15.11
+# Operation : SRS
+# Purpose : SRS
+#allow audioserver system_data_file:file { w_file_perms };
+
+# Date : WK15.33
+# Operation : Migration
+# Purpose : ape playback need to access MtkCodecService service.
+allow audioserver mtk_codec_service_service:service_manager find;
+
+# Date : WK15.44
+# Operation : Migration
+# Purpose : ancservice
+allow audioserver ancservice_device:chr_file { read write ioctl open };
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+# Date : WK15.36
+# Operation : ViLTE
+# Purpose : for ViLTE - set VTservice has permission to access me
+allow audioserver vtservice:binder { transfer call };
+allow audioserver vtservice:fd use;
+
+# Date : WK15.35
+# Operation : Migration
+# Purpose: Allow reador andgetattr path="/data/data/com.mediatek.voicecommand/training
+# /unlock/passwordfile/0.dat"
+allow audioserver system_app_data_file:file { read getattr };
+
+# Add by jackie.lin
+# Date : WK16.10
+# Operation : Move these sepolicy from basic to tk(full) which OMA DRM need
+# Purpose : Allow audioserver to read /proc/pid/cmdline to get process name, so that
+# it can do white list check which is MTK OMA DRM additional protection mechanism
+# system_app:
+allow audioserver system_app:dir search;
+allow audioserver system_app:file { read open getattr };
+# platform_app:
+allow audioserver platform_app:dir search;
+allow audioserver platform_app:file { read open getattr };
+# untrusted_app:
+allow audioserver untrusted_app:dir search;
+allow audioserver untrusted_app:file { read open getattr };
+
+# Date : WK15.46
+# Operation : Migration
+# Purpose : OpenDSP: read/write ipi message to tinysys
+allow audioserver audio_ipi_device:chr_file { read write ioctl open };
+
+# Date : WK14.37
+# Operation : Migration
+# Purpose : WFD and MET Latency measurement
+allow audioserver media_wfd_prop:property_service set;
