@@ -7,7 +7,7 @@
 # ==============================================
 
 type atci_service_exec , exec_type, file_type;
-type atci_service ,domain;
+type atci_service ,domain, domain_deprecated;
 
 # ==============================================
 # Android Policy Rule
@@ -113,8 +113,6 @@ allow atci_service mtk_perf_service:service_manager find;
 allow atci_service nvdata_file:file getattr;
 allow atci_service sensorservice_service:service_manager find;
 allow atci_service storage_file:lnk_file read;
-allow atci_service media_rw_data_file:dir { write search create add_name };
-allow atci_service media_rw_data_file:file { read write create open };
 
 # Date : 2015/11/03
 # Operation : Change the file path from /data/ tp /data/cct
@@ -125,16 +123,9 @@ allow atci_service cct_data_file:file { setattr read create write getattr unlink
 #============= atci_service ==============
 allow atci_service nvcfg_file:dir { search write open read add_name create };
 allow atci_service nvcfg_file:file { read write getattr open create };
-allow atci_service property_socket:sock_file write;
-allow atci_service CAM_CAL_DRV_device:chr_file { read write ioctl open};
-allow atci_service init:unix_stream_socket connectto;
-allow atci_service mtk_em_prop:property_service set;
 
 # Date : 2016/03/02
 # Operation : M-Migration
 # Purpose : to support ATCI touch tool
 allow atci_service shell_exec:file { read execute open execute_no_trans };
 
-# Date : WK16.33
-# Purpose: Allow to access ged for gralloc_extra functions
-allow atci_service proc_ged:file {open read write ioctl getattr};

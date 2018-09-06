@@ -16,11 +16,3 @@ allow domain debugfs_binder:dir search;
 # Allow all processes to read /sys/bus/platform/drivers/dev_info/dev_info
 # as it is a public interface for all processes to read some OTP data.
 allow domain sysfs_devinfo:file r_file_perms;
-# ==============================================
-# MTK Policy Rule
-# ==============================================
-
-# allow domain anr_data_file:file append;
-
-# Fingerprint device
-allow domain esfp0_device:chr_file rw_file_perms;

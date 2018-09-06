@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type boot_logo_updater_exec , exec_type, file_type;
-type boot_logo_updater ,domain;
+type boot_logo_updater ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule

@@ -4,7 +4,7 @@
 # ==============================================
 # Type Declaration
 # ==============================================
-type fuelgauged_static ,domain;
+type fuelgauged_static ,domain, domain_deprecated;
 type fuelgauged_static_exec , exec_type, file_type;
 
 # ==============================================

@@ -6,7 +6,7 @@
 # ==============================================
 
 type aal_exec , exec_type, file_type;
-type aal ,domain;
+type aal ,domain, domain_deprecated;
 
 # ==============================================
 # Android Policy Rule

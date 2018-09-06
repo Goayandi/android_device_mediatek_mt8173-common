@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type slpd_exec, exec_type, file_type;
-type slpd, domain;
+type slpd, domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule

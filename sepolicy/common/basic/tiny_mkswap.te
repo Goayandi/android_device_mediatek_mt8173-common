@@ -6,7 +6,7 @@
 # Type Declaration
 # ==============================================
 type tiny_mkswap_exec , exec_type, file_type;
-type tiny_mkswap ,domain;
+type tiny_mkswap ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule

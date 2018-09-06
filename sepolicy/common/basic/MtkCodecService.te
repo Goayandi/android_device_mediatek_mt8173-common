@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type MtkCodecService_exec , exec_type, file_type;
-type MtkCodecService ,domain;
+type MtkCodecService ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule

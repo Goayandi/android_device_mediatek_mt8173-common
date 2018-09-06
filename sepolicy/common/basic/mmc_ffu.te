@@ -4,7 +4,7 @@
 # ==============================================
 # Type Declaration
 # ==============================================
-type mmc_ffu, domain;
+type mmc_ffu, domain, domain_deprecated;
 type mmc_ffu_exec, exec_type, file_type;
 
 # ==============================================

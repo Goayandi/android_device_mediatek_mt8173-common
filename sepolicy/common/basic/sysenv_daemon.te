@@ -7,7 +7,7 @@
 # ==============================================
 
 type sysenv_daemon_exec , exec_type, file_type;
-type sysenv_daemon ,domain;
+type sysenv_daemon ,domain, domain_deprecated;
 
 # ==============================================
 # Android Policy Rule

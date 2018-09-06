@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type enableswap_exec , exec_type, file_type;
-type enableswap ,domain;
+type enableswap ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule
@@ -40,6 +40,11 @@ allow enableswap system_file:file execute_no_trans;
 allow enableswap enableswap_data_file:file create_file_perms;
 allow enableswap system_data_file:dir ra_dir_perms;
 allow enableswap self:capability dac_override;
+
+# Date : WK15.30
+# Operation : Migration
+# Purpose : Allow more operations on init_tmpfs
+allow enableswap init_tmpfs:file w_file_perms;
 
 # Date : WK16.18
 # Operation : N Migration

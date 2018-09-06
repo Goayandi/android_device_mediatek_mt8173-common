@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type msensord_exec , exec_type, file_type;
-type msensord ,domain;
+type msensord ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule
@@ -26,19 +26,3 @@ set_prop(msensord, ctl_geomagneticd_prop)
 set_prop(msensord, ctl_orientationd_prop)
 set_prop(msensord, ctl_istd8303_prop)
 set_prop(msensord, ctl_st480_prop)
-# ==============================================
-# Policy File of /system/binmsensord Executable File
-
-# ==============================================
-# Type Declaration
-# ==============================================
-
-# ==============================================
-# MTK Policy Rule
-# ==============================================
-
-# set the ctl.xxxd property
-allow msensord ctl_akmd09912_prop:property_service set;
-allow msensord ctl_mxg2320d_prop:property_service set;
-allow msensord ctl_bmm050d_prop:property_service set;
-allow msensord ctl_bmm056d_prop:property_service set;

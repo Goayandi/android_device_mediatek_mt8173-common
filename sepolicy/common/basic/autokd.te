@@ -4,7 +4,7 @@
 # ==============================================
 # Type Declaration
 # ==============================================
-type autokd, domain;
+type autokd, domain, domain_deprecated;
 type autokd_exec, exec_type, file_type;
 
 # ==============================================

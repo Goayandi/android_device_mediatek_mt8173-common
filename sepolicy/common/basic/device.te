@@ -217,26 +217,3 @@ type m_ges_misc_device, dev_type;
 type m_step_c_misc_device, dev_type;
 type m_tilt_misc_device, dev_type;
 type m_fusion_misc_device, dev_type;
-# ==============================================
-# MTK Policy Rule
-# ==============================================
-
-# Date : 2016/06/01
-# Operation: TEEI integration
-# Purpose: access for fp device and client device of TEEI
-type teei_fp_device, dev_type;
-type teei_client_device, dev_type;
-type teei_config_device, dev_type;
-type teei_vfs_device, dev_type;
-type teei_rpmb_device, dev_type;
-type ut_keymaster_device, dev_type;
-
-# Date : 2016/07/11
-# Operation : Migration
-# Purpose : Add permission for gpu access
-type dri_device, dev_type, mlstrustedobject;
-type hotknot_device, dev_type;
-type irrx_device, dev_type;
-
-# Fingerprint device
-type esfp0_device, dev_type, mlstrustedobject;

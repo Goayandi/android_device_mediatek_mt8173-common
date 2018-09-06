@@ -7,7 +7,7 @@
 # ==============================================
 
 type meta_tst_exec , exec_type, file_type;
-type meta_tst ,domain;
+type meta_tst ,domain, domain_deprecated;
 
 
 # ==============================================
@@ -166,6 +166,9 @@ allow meta_tst stpbt_device:chr_file rw_file_perms;
 # Date: WK16.12
 # Operation : Migration
 # Purpose : meta mode GPS
+allow meta_tst gps_device:chr_file rw_file_perms;
+allow meta_tst gps_data_file:file create_file_perms;
+allow meta_tst gps_data_file:dir rw_dir_perms;
 allow meta_tst agpsd_data_file:dir search;
 allow meta_tst agpsd_data_file:sock_file write;
 allow meta_tst mnld_device:chr_file rw_file_perms;
@@ -225,7 +228,7 @@ allow meta_tst sysfs_ccci:file r_file_perms;
 
 #Date: W16.17
 # Purpose:  N Migration for meta_tst get com port type and uart port info
-# detail avc log: [   11.751803] <1>.(1)[227:logd.auditd]type=1400 audit(1262304016.560:10):
+# detail avc log: [   11.751803] <1>.(1)[227:logd.auditd]type=1400 audit(1262304016.560:10): 
 #avc: denied { read } for pid=203 comm="meta_tst" name="meta_com_type_info" dev=
 #"sysfs" ino=11073 scontext=u:r:meta_tst:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=0
 allow meta_tst sysfs:file rw_file_perms;
@@ -238,43 +241,10 @@ allow meta_tst sysfs:file rw_file_perms;
 #s0 tcontext=u:object_r:system_file:s0 tclass=dir permissive=0
 allow meta_tst system_file:dir r_file_perms;
 
-#Date: W16.33
-# Purpose:  N Migration For CCT
-allow meta_tst media_rw_data_file:dir search;
-allow meta_tst media_rw_data_file:file { write open read};
-# ==============================================
-# Policy File of /system/bin/meta_tst Executable File
-
-# ==============================================
-# MTK Policy Rule
-# ==============================================
-
-# Date : WK14.42
-# Operation : L Migration
-# Purpose : for meta mode driver module operation
-#============= meta_tst ==============
+#Date: w16.36
+# Purpose: For GPS HW test
 allow meta_tst mnld_exec:file rx_file_perms;
 
-# Date: WK14.45
-# Operation : Migration
-# Purpose : HDCP and DRM key installation
-allow meta_tst mobicore:unix_stream_socket connectto;
-allow meta_tst mobicore_data_file:dir search;
-allow meta_tst mobicore_data_file:file r_file_perms;
-allow meta_tst mobicore_user_device:chr_file rw_file_perms;
 
-# Date : 2016/06/01
-# Operation: TEEI integration
-# Purpose: Microtrust service
-allow meta_tst init_thh_service_exec:file { x_file_perms read open };
-allow meta_tst teei_data_file:dir create_dir_perms;
-allow meta_tst teei_data_file:file rw_file_perms;
-allow meta_tst teei_data_file:file create_file_perms;
-allow meta_tst soter_teei_prop:property_service {set};
-allow meta_tst teei_thh_data_file:dir { search write };
-allow meta_tst teei_thh_data_file:file create_file_perms;
-allow meta_tst teei_thh_data_file:file rw_file_perms;
-
-allow meta_tst camera_tsf_device:chr_file rw_file_perms;
-allow meta_tst camera_isp_device:chr_file { read write ioctl open };
-
+allow meta_tst cct_data_file:dir { write read open add_name remove_name search create getattr setattr };
+allow meta_tst cct_data_file:file { setattr read create write getattr unlink open append };

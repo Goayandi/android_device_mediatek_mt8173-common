@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type aee_core_forwarder_exec , exec_type, file_type;
-type aee_core_forwarder ,domain;
+type aee_core_forwarder ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule

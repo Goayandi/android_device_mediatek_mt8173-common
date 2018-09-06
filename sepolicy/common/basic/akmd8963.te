@@ -7,7 +7,7 @@
 # ==============================================
 
 type akmd8963_exec , exec_type, file_type;
-type akmd8963 ,domain;
+type akmd8963 ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule

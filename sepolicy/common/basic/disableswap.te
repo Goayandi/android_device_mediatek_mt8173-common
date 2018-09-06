@@ -5,7 +5,7 @@
 # Type Declaration
 # ==============================================
 type disableswap_exec , exec_type, file_type;
-type disableswap ,domain;
+type disableswap ,domain, domain_deprecated;
 
 # ==============================================
 # MTK Policy Rule
